@@ -324,9 +324,9 @@ class CartaoDePostagem
                     // $this->t($headerColWidth, 'Cartão de Postagem', 2, 'C');
 
                     // Número da plp
-                    $this->pdf->SetXY($lPosHeaderCol2, $tPosFourAreas + 32);
+                    $this->pdf->SetXY($lPosHeaderCol2, $tPosFourAreas + 34);
                     $this->setFillColor(150, 200, 200);
-                    $this->pdf->SetFont('', '');
+                    $this->pdf->SetFont('', 'B');
                     $this->pdf->SetFontSize(9);
                     $this->t($headerColWidth * 3, 'PLP: ' . $this->idPlpCorreios, 0, 'C');
                 }
@@ -338,6 +338,8 @@ class CartaoDePostagem
                 $nf = (float)$objetoPostal->getDestino()->getNumeroNotaFiscal();
                 if($nf > 0) {
                     $nf = '    NF: '. $nf;
+                } else{
++                    $nf = '';
                 }
 
                 $numeroPedido = trim($objetoPostal->getDestino()->getNumeroPedido());
@@ -345,12 +347,13 @@ class CartaoDePostagem
                     $numeroPedido = '    Pedido: ' . $numeroPedido;
                 }
 
-                $this->pdf->SetFontSize(7);
+                $this->pdf->SetFontSize(8);
                 $this->t($this->pdf->w, 'Volume: 1/1    '.'Peso(kg): ' . ((float)$objetoPostal->getPeso()) . $nf . $numeroPedido, 1, 'C',  null);
 
                 // Número da etiqueta
                 $this->setFillColor(100, 100, 200);
-                $this->pdf->SetXY(0, $this->pdf->GetY() + 1);
+                $this->pdf->SetXY(0, $this->pdf->GetY() + 5);
+                // $this->pdf->SetXY(0, $this->pdf->GetY() + 1);
                 $this->pdf->SetFontSize(9);
                 $this->pdf->SetFont('', 'B');
                 $etiquetaComDv = $objetoPostal->getEtiqueta()->getEtiquetaComDv();
@@ -384,7 +387,7 @@ class CartaoDePostagem
                 // Destinatário
                 $wAddressLeftCol = $this->pdf->w - 5;
 
-                $tPosAfterNameBlock = 71 ;
+                $tPosAfterNameBlock = 68 ;
 
                 $t = $this->writeDestinatario(
                     $lPosFourAreas,
@@ -492,7 +495,7 @@ class CartaoDePostagem
     private function init()
     {
         $this->pdf = new \PhpSigep\Pdf\ImprovedFPDF('P', 'mm', array(100, 140));
-        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->SetFont('Arial', 'B', 10);
     }
 
     /**
@@ -505,7 +508,7 @@ class CartaoDePostagem
      */
     private function writeDestinatario($l, $t, $w, $objetoPostal)
     {
-        $titulo = 'Destinatário';
+        $titulo = 'DESTINATÁRIO';
         $nomeDestinatario = $objetoPostal->getDestinatario()->getNome();
         $logradouro = $objetoPostal->getDestinatario()->getLogradouro();
         $numero = $objetoPostal->getDestinatario()->getNumero();
@@ -543,7 +546,7 @@ class CartaoDePostagem
 
     private function writeRemetente($l, $t, $w, \PhpSigep\Model\Remetente $remetente)
     {
-        $titulo = 'Remetente';
+        $titulo = 'REMETENTE';
         $nomeDestinatario = $remetente->getNome();
         $logradouro = $remetente->getLogradouro();
         $numero = $remetente->getNumero();
@@ -596,7 +599,7 @@ class CartaoDePostagem
         // Titulo do bloco: destinatario ou remetente
         $this->pdf->SetFont('', 'B');
         $this->setFillColor(60, 60, 60);
-        $this->pdf->SetFontSize(7);
+        $this->pdf->SetFontSize(8);
         $this->pdf->SetXY($l + 3, $t);
         $this->t($w, $titulo, 2, '');
 
@@ -605,7 +608,7 @@ class CartaoDePostagem
         $l = $l + $addressPadding;
 
         // Nome da pessoa
-        $this->pdf->SetFont('', '');
+        $this->pdf->SetFont('', 'B');
         $this->setFillColor(190, 190, 190);
         $this->pdf->SetX($l);
         $this->multiLines($w, $nomeDestinatario, 'L');

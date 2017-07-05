@@ -251,7 +251,7 @@ class CartaoDePostagem2016
                             $chancela = new Sedex2016($lPosChancela, $tPosChancela, $nomeRemetente, Sedex::SERVICE_E_SEDEX, $accessData);
                         }
                         break;
-    
+
                     case ServicoDePostagem::SERVICE_SEDEX_40096:
                     case ServicoDePostagem::SERVICE_SEDEX_40436:
                     case ServicoDePostagem::SERVICE_SEDEX_40444:
@@ -296,7 +296,7 @@ class CartaoDePostagem2016
                             $chancela = new Sedex2016($lPosChancela, $tPosChancela, $nomeRemetente, Sedex::SERVICE_SEDEX_HOJE, $accessData);
                         }
                         break;
-    
+
                     case ServicoDePostagem::SERVICE_CARTA_COMERCIAL_A_FATURAR:
                     case ServicoDePostagem::SERVICE_CARTA_REGISTRADA:
                     case ServicoDePostagem::SERVICE_CARTA_COMERCIAL_REGISTRADA_CTR_EP_MAQ_FRAN:

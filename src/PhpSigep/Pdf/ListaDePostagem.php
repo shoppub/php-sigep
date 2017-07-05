@@ -48,9 +48,9 @@ class ListaDePostagem
             $pdf    = $this->pdf;
             $k      = $pdf->k;
             $wInner = $pdf->w - $pdf->lMargin - $pdf->rMargin;
-            
+
             $this->addPage();
-    
+
             $this->writeTitle($k, $pdf, $wInner);
             $this->writeHeader($pdf, $k, $wInner);
             $pdf->Ln();
@@ -83,7 +83,7 @@ class ListaDePostagem
         $pdf->SetFont('', 'B', 13);
         $pdf->CellXp($wInner, 'LISTA DE POSTAGEM', 'C', 1);
 
-        $pdf->SetFont('', '', 10);
+        $pdf->SetFont('', '', 11);
         $wHeaderCols = $wInner / 3;
         $plp         = $this->plp;
 
@@ -124,7 +124,7 @@ class ListaDePostagem
     {
         $pdf = $this->pdf;
         $k   = $pdf->k;
-        $pdf->SetFont('Courier', 'B', 8);
+        $pdf->SetFont('Courier', 'B', 9);
         $pdf->setLineHeightPadding(7 / $k);
         $y1         = $pdf->y;
         $lineHeigth = $pdf->getLineHeigth();
@@ -292,7 +292,7 @@ class ListaDePostagem
      */
     private function writeListHeader($pdf, $xCol1, $y2, $wCol1, $xCol2, $wCol2, $xCol3, $wCol3, $xCol4, $wCol4, $xCol5, $wCol5, $xCol6, $wCol6, $xCol7, $y1, $wCol7, $xCol8, $wCol8, $xCol9, $wCol9, $xCol10, $wCol10)
     {
-        $pdf->SetFont('Courier', 'B', 8);
+        $pdf->SetFont('Courier', 'B', 9);
         $pdf->SetXY($xCol1, $y2);
         $pdf->CellXp($wCol1, 'Nº do objeto');
         $pdf->SetX($xCol2);
@@ -468,7 +468,7 @@ class ListaDePostagem
         $pdf = $this->pdf;
         $k   = $pdf->k;
 
-        $pdf->SetFont('Arial', '', 8);
+        $pdf->SetFont('Courier', 'B', 9);
         $pdf->setLineHeightPadding(7 / $k);
 
         $lineHeigth = $pdf->getLineHeigth();
@@ -515,7 +515,7 @@ class ListaDePostagem
         foreach ($pdf->pages as $pNumber => $page) {
             $pdf->page = $pNumber;
 
-            $pdf->SetFont('Arial', '', 8);
+            $pdf->SetFont('Arial', '', 9);
 
             $pdf->x = $pdf->lMargin;
             $pdf->y = $pdf->h - $pdf->bMargin;
