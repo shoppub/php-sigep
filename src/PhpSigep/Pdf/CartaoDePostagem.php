@@ -327,7 +327,7 @@ class CartaoDePostagem
                     $this->pdf->SetXY($lPosHeaderCol2, $tPosFourAreas + 34);
                     $this->setFillColor(150, 200, 200);
                     $this->pdf->SetFont('', 'B');
-                    $this->pdf->SetFontSize(9);
+                    $this->pdf->SetFontSize(10);
                     $this->t($headerColWidth * 3, 'PLP: ' . $this->idPlpCorreios, 0, 'C');
                 }
 
@@ -347,14 +347,14 @@ class CartaoDePostagem
                     $numeroPedido = '    Pedido: ' . $numeroPedido;
                 }
 
-                $this->pdf->SetFontSize(8);
+                $this->pdf->SetFontSize(9);
                 $this->t($this->pdf->w, 'Volume: 1/1    '.'Peso(kg): ' . ((float)$objetoPostal->getPeso()) . $nf . $numeroPedido, 1, 'C',  null);
 
                 // Número da etiqueta
                 $this->setFillColor(100, 100, 200);
                 $this->pdf->SetXY(0, $this->pdf->GetY() + 5);
                 // $this->pdf->SetXY(0, $this->pdf->GetY() + 1);
-                $this->pdf->SetFontSize(9);
+                $this->pdf->SetFontSize(10);
                 $this->pdf->SetFont('', 'B');
                 $etiquetaComDv = $objetoPostal->getEtiqueta()->getEtiquetaComDv();
                 $this->t($wInnerFourAreas, $etiquetaComDv, 1, 'C');
@@ -378,11 +378,11 @@ class CartaoDePostagem
 
                 // Nome legivel, doc e rubrica
                 //
-                $this->pdf->SetFontSize(7);
-                $this->pdf->SetXY(1, $this->pdf->GetY() + 23);
-                $this->t(0, 'Nome Legível:___________________________________________',1, 'L',  null);
-                $this->pdf->SetXY(1, $this->pdf->GetY() + 1);
-                $this->t(0, 'Documento:_______________________Rubrica:_____________________',1, 'L',  null);
+                // $this->pdf->SetFontSize(7);
+                // $this->pdf->SetXY(1, $this->pdf->GetY() + 23);
+                // $this->t(0, 'Nome Legível:___________________________________________',1, 'L',  null);
+                // $this->pdf->SetXY(1, $this->pdf->GetY() + 1);
+                // $this->t(0, 'Documento:_______________________Rubrica:_____________________',1, 'L',  null);
 
                 // Destinatário
                 $wAddressLeftCol = $this->pdf->w - 5;
@@ -495,7 +495,7 @@ class CartaoDePostagem
     private function init()
     {
         $this->pdf = new \PhpSigep\Pdf\ImprovedFPDF('P', 'mm', array(100, 140));
-        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->SetFont('Arial', 'B', 11);
     }
 
     /**
@@ -599,7 +599,7 @@ class CartaoDePostagem
         // Titulo do bloco: destinatario ou remetente
         $this->pdf->SetFont('', 'B');
         $this->setFillColor(60, 60, 60);
-        $this->pdf->SetFontSize(8);
+        $this->pdf->SetFontSize(9);
         $this->pdf->SetXY($l + 3, $t);
         $this->t($w, $titulo, 2, '');
 
